@@ -5,13 +5,6 @@ var array_2 = ['client-company-name', 'client-company-document']
 // setting disable to button
 document.getElementById('go-to-shipping').disabled = true
 
-window.addEventListener("popstate", function() {
-    if (/profile/i.test(window.location.href)) {
-        // disable button
-        document.getElementById('go-to-shipping').disabled = true
-    }
-})
-
 // create event to principal fields
 for (var i = 0; i < array_1.length; i++ ) {
     $('#' + array_1[i]).blur(function() {
