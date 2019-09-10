@@ -128,6 +128,7 @@ p.disclaimer-dir::after {
     left: 0;
     width: 20px;
     height: 20px;
+    content: "1";
     margin: 0 auto;
     font-size: 10px;
     color: #FF6702;
@@ -138,11 +139,16 @@ p.disclaimer-dir::after {
     position: absolute;
     display: inline-block;
     vertical-align: middle;
-    counter-reset: section;
-    counter-increment: section;
-    content: counter(section);
     border: 2px solid #FF6702;
     background-color: transparent;
+}
+
+.step-popup ul li:nth-child(2)::before {
+    content: "2";    
+}
+
+.step-popup ul li:last-child::before {
+    content: "3";    
 }
 
 
