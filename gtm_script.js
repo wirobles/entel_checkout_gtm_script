@@ -1,5 +1,4 @@
 validatingInputs()
-builgMenu()
 
 function validatingInputs () {
     var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone'],
