@@ -1,4 +1,5 @@
 validatingInputs()
+builgMenu()
 
 function validatingInputs () {
     var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone'],
@@ -32,7 +33,7 @@ function validatingInputs () {
 
             for (var i = 0; i < array_2.length; i++ ) {
                 document.querySelector('#' + array_2[i]).value = ''
-                document.querySelector('#' + array_2[i]).removeClass('success')
+                document.querySelector('#' + array_2[i]).classList.remove('success')
             }
         }
     })
