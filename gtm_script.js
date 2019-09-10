@@ -79,5 +79,4 @@ var interval_fuera_zona_delivery = setInterval(function() {
       });
     }
   }
-  console.log("hola1");
 }, 500);
