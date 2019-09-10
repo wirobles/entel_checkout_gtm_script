@@ -49,18 +49,19 @@
 }
 
 
-.box-delivery .ship-street-text {
-    display: none;
+.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle.accordion-shipping-title span[data-i18n='shipping.title']::before,
+.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle span[data-i18n='clientProfileData.identification']:before {
+    color: white;
+    background-color: #FF6702;
+    content: url("https://enteltest.vteximg.com.br/arquivos/check-white-checkout.png");
 }
 
 p.search-another-address a.search-another-address-btn {
-    height: -10px;
     width: 153px;
     height: 30px;
     font-size: 12px;
     color: #FF6702;
     line-height: 30px;
-    line-height: 20px;
     text-align: center;
     border-radius: 90px;
     display: inline-block;
