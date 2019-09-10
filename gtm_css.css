@@ -48,6 +48,14 @@
     color: white;
 }
 
+
+.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle.accordion-shipping-title span[data-i18n='shipping.title']::before,
+.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle span[data-i18n='clientProfileData.identification']:before {
+    color: white;
+    background-color: #FF6702;
+    content: url("https://enteltest.vteximg.com.br/arquivos/check-white-checkout.png");
+}
+
 p.search-another-address a.search-another-address-btn {
     width: 153px;
     height: 30px;
