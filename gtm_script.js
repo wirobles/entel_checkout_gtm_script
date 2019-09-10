@@ -1,5 +1,5 @@
 
-/*var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone'],
+var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone'],
 array_2 = ['client-company-name', 'client-company-document']
 
 // setting disable to button
@@ -54,4 +54,4 @@ if (true) {
 }
 
 return flag
-}*/
+}
