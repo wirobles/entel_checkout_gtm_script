@@ -58,26 +58,6 @@ p.search-another-address a.search-another-address-btn {
     border: 1px solid #FF6702;
 }
 
-
-p.disclaimer-dir {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 13px;
-    color: #6C6C6C;
-}
-
-
-p.disclaimer-dir::before {
-    content: "icon";
-    font-weight: bold;
-}
-
-p.disclaimer-dir::after {
-    content: "Puede ingresar calle, número y distrito (No incluir piso o departamento)";
-    font-weight: 100;
-}
-
-
 /*Pop up dir*/
 
 .step-popup {
@@ -150,7 +130,6 @@ p.disclaimer-dir::after {
 .step-popup ul li:last-child::before {
     content: "3";    
 }
-
 
 .popup-overlay {
     width: 100%;
