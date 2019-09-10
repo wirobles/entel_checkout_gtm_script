@@ -32,6 +32,7 @@ function validatingInputs () {
 
             for (var i = 0; i < array_2.length; i++ ) {
                 document.querySelector('#' + array_2[i]).value = ''
+                document.querySelector('#' + array_2[i]).removeClass('success')
             }
         }
     })
