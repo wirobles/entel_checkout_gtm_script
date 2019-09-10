@@ -172,6 +172,7 @@ p.disclaimer-dir::after {
         width: 710px;
         height: 470px;
         padding: 21px 58px;
+        top: calc(40%/2);
     }
 
     .step-popup h5 {
