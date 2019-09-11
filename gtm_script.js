@@ -79,22 +79,73 @@ function validateInputsClass (array) {
 var interval_fuera_zona_delivery = setInterval(function() {
     var modal_error_zona_delivery = document.querySelectorAll(".unavailable-message-modal")
     if (modal_error_zona_delivery.length) {
-      if (modal_error_zona_delivery[0].style.display != "none") {
-        clearInterval(interval_fuera_zona_delivery)
-        var inputState = document.querySelectorAll("input[name=state][type=hidden]")
-        var inputCity = document.querySelectorAll("input[name=city][type=hidden]")
-        var inputNeighborhood = document.querySelectorAll("input[name=neighborhood][type=hidden]")
-        var inputStreet = document.querySelectorAll("input[name=street][type=hidden]")
-        var direccionState = inputState.length ? inputState[0].value : ""
-        var direccionCity = inputCity.length ? inputCity[0].value : ""
-        var direccionNeighborhood = inputNeighborhood.length ? inputNeighborhood[0].value : ""
-        var direccionStreet = inputStreet.length ? inputStreet[0].value : ""
-        var direccionFinal = direccionState + " - " + direccionCity + " - " + direccionNeighborhood + " - " + direccionStreet
-        var dataLayer = window.dataLayer || []
-        dataLayer.push({
-          'event': 'fuera_zona_delivery',
-          'direccion': direccionFinal
-        })
+        if (modal_error_zona_delivery[0].style.display != "none") {
+            clearInterval(interval_fuera_zona_delivery)
+
+            var inputState = document.querySelectorAll("input[name=state][type=hidden]"),
+                inputCity = document.querySelectorAll("input[name=city][type=hidden]"),
+                inputNeighborhood = document.querySelectorAll("input[name=neighborhood][type=hidden]"),
+                inputStreet = document.querySelectorAll("input[name=street][type=hidden]"),
+                direccionState = inputState.length ? inputState[0].value : "",
+                direccionCity = inputCity.length ? inputCity[0].value : "",
+                direccionNeighborhood = inputNeighborhood.length ? inputNeighborhood[0].value : "",
+                direccionStreet = inputStreet.length ? inputStreet[0].value : "",
+                direccionFinal = direccionState + " - " + direccionCity + " - " + direccionNeighborhood + " - " + direccionStreet,        
+                dataLayer = window.dataLayer || []
+
+            dataLayer.push({
+                'event': 'fuera_zona_delivery',
+                'direccion': direccionFinal
+            })
       }
     }
 }, 500)
+
+// add popup html
+var _body = document.querySelector('body'),
+    container = document.createElement('div'),
+    overlay = document.createElement('div'),
+    h5 = document.createElement('h5'),
+    ul = document.createElement('ul'),
+    li1 = document.createElement('li'),
+    li2 = document.createElement('li'),
+    li3 = document.createElement('li'),
+    picture = document.createElement('picture'),
+    source1 = document.createElement('source'),
+    source2 = document.createElement('source'),
+    img = document.createElement('img'),
+    a = document.createElement('a'),
+    p_text_here = document.createElement('p'),
+    getDirBtn = document.getElementById("get-dir-btn"),
+    stepPopUp = document.getElementById("step-popup"),
+    popupOverlay = document.getElementById("popup-overlay")
+
+    container.setAttribute('class','step-popup')
+    overlay.setAttribute('class','popup-overlay')
+    _body.appendChild(container)
+    _body.appendChild(overlay)
+    container.appendChild(h5)
+    container.appendChild(ul)    
+    ul.appendChild(li1)
+    ul.appendChild(li2)
+    ul.appendChild(li3)
+    container.appendChild(picture)
+    picture.appendChild(source1)
+    picture.appendChild(source2)
+    picture.appendChild(img)
+    container.appendChild(a)
+    h5.appendChild(document.createTextNode('Para poder ubicar tu dirección, sigue estos pasos:'))
+    li1.appendChild(document.createTextNode('Ingresa solo el nombre de la calle, avenida o jirón.'))
+    li2.appendChild(document.createTextNode('Recuerda en agregar tu número y distrito.'))
+    li3.appendChild(document.createTextNode('Finalmente, ubica y selecciona tu dirección en la lista.'))
+    source1.setAttribute('media','(min-width: 650px)')
+    source1.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
+    source2.setAttribute('media','(min-width: 465px)')
+    source2.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
+    img.setAttribute('src','/arquivos/step-popup-img.jpg')
+    a.setAttribute('href','javascript:void(0)')
+    a.setAttribute('id','get-dir-btn')
+    a.appendChild(document.createTextNode('Entendido'))
+
+    // elements for events
+    
