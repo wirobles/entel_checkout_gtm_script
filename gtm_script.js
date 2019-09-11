@@ -1,4 +1,8 @@
-
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* ------------ STEP PROFILE ------------ */
+/* -------------------------------------- */
+/* -------------------------------------- */
 var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone']
 var array_2 = ['client-company-name', 'client-company-document']
 var loopArray1
@@ -65,6 +69,12 @@ function validateInputsClass (array) {
     return flag
 }
 
+/* --------------------------------------- */
+/* --------------------------------------- */
+/* ------------ STEP SHIPPING ------------ */
+/* --------------------------------------- */
+/* --------------------------------------- */
+
 // evento para medir las impresiones del pop-up 'fuera de zona de delivery'
 var interval_fuera_zona_delivery = setInterval(function() {
     var modal_error_zona_delivery = document.querySelectorAll(".unavailable-message-modal")
@@ -87,4 +97,4 @@ var interval_fuera_zona_delivery = setInterval(function() {
         })
       }
     }
-  }, 500)
+}, 500)
