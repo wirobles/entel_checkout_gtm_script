@@ -64,3 +64,27 @@ function validateInputsClass (array) {
 
     return flag
 }
+
+// evento para medir las impresiones del pop-up 'fuera de zona de delivery'
+var interval_fuera_zona_delivery = setInterval(function() {
+    var modal_error_zona_delivery = document.querySelectorAll(".unavailable-message-modal")
+    if (modal_error_zona_delivery.length) {
+      if (modal_error_zona_delivery[0].style.display != "none") {
+        clearInterval(interval_fuera_zona_delivery)
+        var inputState = document.querySelectorAll("input[name=state][type=hidden]")
+        var inputCity = document.querySelectorAll("input[name=city][type=hidden]")
+        var inputNeighborhood = document.querySelectorAll("input[name=neighborhood][type=hidden]")
+        var inputStreet = document.querySelectorAll("input[name=street][type=hidden]")
+        var direccionState = inputState.length ? inputState[0].value : ""
+        var direccionCity = inputCity.length ? inputCity[0].value : ""
+        var direccionNeighborhood = inputNeighborhood.length ? inputNeighborhood[0].value : ""
+        var direccionStreet = inputStreet.length ? inputStreet[0].value : ""
+        var direccionFinal = direccionState + " - " + direccionCity + " - " + direccionNeighborhood + " - " + direccionStreet
+        var dataLayer = window.dataLayer || []
+        dataLayer.push({
+          'event': 'fuera_zona_delivery',
+          'direccion': direccionFinal
+        })
+      }
+    }
+  }, 500)

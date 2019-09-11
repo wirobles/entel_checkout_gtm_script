@@ -40,20 +40,10 @@
     display: inline-block !important;
 }
 
-
-
 .checkout-container .orderform-template .step.accordion-group.active .accordion-heading span.accordion-toggle.accordion-shipping-title span[data-i18n='shipping.title']::before,
 .checkout-container .orderform-template .step.accordion-group.active .accordion-heading span.accordion-toggle span[data-i18n='clientProfileData.identification']:before {
     background-color: #FF6702;
     color: white;
-}
-
-
-.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle.accordion-shipping-title span[data-i18n='shipping.title']::before,
-.checkout-container .orderform-template .step.accordion-group.filled .accordion-heading span.accordion-toggle span[data-i18n='clientProfileData.identification']:before {
-    color: white;
-    background-color: #FF6702;
-    content: url("https://enteltest.vteximg.com.br/arquivos/check-white-checkout.png");
 }
 
 p.search-another-address a.search-another-address-btn {
@@ -68,21 +58,130 @@ p.search-another-address a.search-another-address-btn {
     border: 1px solid #FF6702;
 }
 
+/*Pop up dir*/
 
-p.disclaimer-dir {
-    font-weight: bold;
+.step-popup {
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 12;
+    width: 286px;
+    height: 447px;
+    padding: 27px;
+    position: fixed;
+    top: calc(30%/2);
+    margin-left: auto;
+    border-radius: 8px;
+    margin-right: auto;
+    counter-reset: section;
+    background-color: #ffffff;
+}
+
+.step-popup h5 {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.step-popup ul li {
     font-size: 12px;
-    line-height: 13px;
-    color: #6C6C6C;
+    line-height: 14px;
+    padding-left: 32px;
+    position: relative;
+}
+
+.step-popup a {
+    width: 235px;
+    height: 36px;
+    display: block;
+    font-size: 14px;
+    color: white;
+    margin-top: 21px;
+    font-weight: 600;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 7px;
+    background: #FF6702;
+    text-transform: uppercase;
+}
+
+.step-popup ul li::before {
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: "1";
+    margin: 0 auto;
+    font-size: 10px;
+    color: #FF6702;
+    line-height: 20px;
+    margin-right: 7px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    border: 2px solid #FF6702;
+    background-color: transparent;
+}
+
+.step-popup ul li:nth-child(2)::before {
+    content: "2";    
+}
+
+.step-popup ul li:last-child::before {
+    content: "3";    
+}
+
+.popup-overlay {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 11;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(9, 9, 9, 0.6);
 }
 
 
-p.disclaimer-dir::before {
-    content: "icon";
-    font-weight: bold;
-}
+@media screen and (min-width: 640px) {
+    .step-popup {
+        width: 710px;
+        height: 470px;
+        padding: 21px 58px;
+        top: calc(40%/2);
+    }
 
-p.disclaimer-dir::after {
-    content: "Puede ingresar calle, número y distrito (No incluir piso o departamento)";
-    font-weight: 100;
+    .step-popup h5 {
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    .step-popup ul {
+        margin: 21px 0;
+    }
+
+    .step-popup ul li {
+        height: 67px;
+        font-size: 16px;
+        line-height: 18px;
+        width: calc(100%/3);
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .step-popup img {
+        width: 100%;
+        height: 200px;
+        height: 200px;
+    }
+
+    .step-popup a {
+        width: 250px;
+        height: 52px;
+        line-height: 52px;
+        margin: 21px auto;
+    }
 }
