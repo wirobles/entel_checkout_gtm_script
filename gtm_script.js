@@ -153,14 +153,14 @@ window.addEventListener('popstate', function() {
             // elements to click to open steps popup
             build_Step_Open_Pop_Up_Button ()
         }, 500)        
-    }
+    }    
+})
 
-    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
-        setTimeout(function(){
-            //
-            build_Step_Open_Pop_Up_Button ()
-        }, 500)
-    })
+document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+    setTimeout(function(){
+        //
+        build_Step_Open_Pop_Up_Button ()
+    }, 500)
 })
 
 //
