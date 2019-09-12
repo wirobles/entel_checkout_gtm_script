@@ -5,6 +5,7 @@
 /* -------------------------------------- */
 /* -------------------------------------- */
 
+/*--------------------------------------------------------------------------------------------------------------------*/
 var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone']
 var array_2 = ['client-company-name', 'client-company-document']
 var loopArray1
@@ -70,6 +71,7 @@ function validateInputsClass (array) {
 
     return flag
 }
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 /* --------------------------------------- */
 /* --------------------------------------- */
@@ -77,6 +79,7 @@ function validateInputsClass (array) {
 /* --------------------------------------- */
 /* --------------------------------------- */
 
+/*--------------------------------------------------------------------------------------------------------------------*/
 // event to measure pop-up impressions 'outside the delivery zone'
 var interval_fuera_zona_delivery = setInterval(function() {
     var modal_error_zona_delivery = document.querySelectorAll(".unavailable-message-modal")
@@ -102,7 +105,7 @@ var interval_fuera_zona_delivery = setInterval(function() {
       }
     }
 }, 500)
-
+/*--------------------------------------------------------------------------------------------------------------------*/
 // add steps popup html
 var _body = document.querySelector('body'),
     container = document.createElement('div'),
@@ -116,11 +119,7 @@ var _body = document.querySelector('body'),
     source1 = document.createElement('source'),
     source2 = document.createElement('source'),
     img = document.createElement('img'),
-    a = document.createElement('a'),
-    p_text_here = document.createElement('p'),
-    getDirBtn = document.getElementById("get-dir-btn"),
-    stepPopUp = document.getElementById("step-popup"),
-    popupOverlay = document.getElementById("popup-overlay")
+    a = document.createElement('a')
 
 container.setAttribute('class','step-popup')
 overlay.setAttribute('class','popup-overlay')
@@ -148,13 +147,26 @@ img.setAttribute('src','/arquivos/step-popup-img.jpg')
 a.setAttribute('href','javascript:void(0)')
 a.appendChild(document.createTextNode('Entendido'))
 
-// elements for events
-var content_click_to_open_popup = document.querySelectorAll('#ship-address-search'),
+// elements to click to open steps popup
+var content_click_to_open_popup = document.querySelectorAll("#ship-address-search")[0],
     content_click_to_open_popup_p = document.createElement('p'),
     content_click_to_open_popup_p_a = document.createElement('a')
 
-/*content_click_to_open_popup.insertAfter(content_click_to_open_popup_p)
+content_click_to_open_popup.parentElement.appendChild(content_click_to_open_popup_p)
+content_click_to_open_popup_p.setAttribute('class','btn-dir-here')
 content_click_to_open_popup_p.appendChild(document.createTextNode('Si no encuentras tu dirección, ingresa '))
 content_click_to_open_popup_p.appendChild(content_click_to_open_popup_p_a)
 content_click_to_open_popup_p_a.setAttribute('href','javascript:void(0)')
-content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))*/
+content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))
+
+// events to open steps popup
+document.querySelector('.btn-dir-here a').addEventListener("click", function() {
+    document.querySelector('.step-popup').classList.add("active")
+    document.querySelector('.popup-overlay').classList.add("active")
+})
+
+document.querySelector('.step-popup a').addEventListener("click", function() {
+    document.querySelector('.step-popup').classList.remove("active")
+    document.querySelector('.popup-overlay').classList.remove("active")
+})
+/*--------------------------------------------------------------------------------------------------------------------*/

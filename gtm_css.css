@@ -96,7 +96,6 @@ p.ship-reference.input.text.hide {
     width: 286px;
     height: 447px;
     padding: 27px;
-    display: none;
     position: fixed;
     top: calc(30%/2);
     margin-left: auto;
@@ -110,7 +109,6 @@ p.ship-reference.input.text.hide {
 }
 
 .step-popup.active {
-    display: block;
     z-index: 999;    
     opacity: 1;
 }
@@ -181,7 +179,6 @@ p.ship-reference.input.text.hide {
     width: 100%;
     z-index: -999;
     height: 100vh;
-    display: none;
     opacity: 0;
     position: fixed;
     margin-left: auto;
@@ -194,7 +191,6 @@ p.ship-reference.input.text.hide {
 }
 
 .popup-overlay.active {
-    display: block;
     z-index: 998;
     opacity: 1;
 }
