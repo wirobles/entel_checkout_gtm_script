@@ -1,0 +1,44 @@
+/*------ shipping data ------*/
+
+#shipping-data {
+    //
+    .ship-more-info,
+    .ship-reference {
+        width: 100% !important;
+
+        @media (min-width: 640px) {
+            width: 49% !important;
+        }
+    }
+
+    #gtm-label-shipping {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 14px 0;
+    
+        @media (min-width: 640px) {
+            padding: 0 0 14px 0;
+        }
+    }
+
+    #force-shipping-fields {
+        display: none;
+    }
+
+    .btn-dir-here {
+        font-size: 12px;
+        line-height: 14px;
+        color: #0154A0;
+        position: relative;
+        bottom: -5px;
+        
+        a {
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 14px;
+            color: #0154A0;
+            text-decoration: underline;
+        }
+    }
+}

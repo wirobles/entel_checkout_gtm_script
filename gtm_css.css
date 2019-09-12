@@ -125,7 +125,7 @@ p.ship-reference.input.text.hide {
 }
 
 .step-popup.active {
-    z-index: 999;    
+    z-index: 999;
     opacity: 1;
 }
 
