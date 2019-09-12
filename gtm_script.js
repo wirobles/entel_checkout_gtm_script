@@ -154,6 +154,13 @@ window.addEventListener('popstate', function() {
             build_Step_Open_Pop_Up_Button ()
         }, 500)        
     }
+
+    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+        setTimeout(function(){
+            //
+            build_Step_Open_Pop_Up_Button ()
+        }, 500)
+    })
 })
 
 //
@@ -178,13 +185,6 @@ function build_Step_Open_Pop_Up_Button () {
     document.querySelector('.step-popup a').addEventListener("click", function() {
         document.querySelector('.step-popup').classList.remove("active")
         document.querySelector('.popup-overlay').classList.remove("active")
-    })
-
-    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
-        setTimeout(function(){
-            //
-            build_Step_Open_Pop_Up_Button ()
-        }, 500)
-    })
+    })    
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
