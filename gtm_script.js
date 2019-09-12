@@ -152,24 +152,16 @@ window.addEventListener('popstate', function() {
 
             // elements to click to open steps popup
             build_Step_Open_Pop_Up_Button ()
-        }, 500)        
+        }, 500)
     }    
 })
-
-setInterval(function() {
-    if (document.querySelector('.search-another-address-btn')) {
-        document.querySelector('.search-another-address-btn').addEventListener("click", function() {
-            build_Step_Open_Pop_Up_Button ()
-        })
-    }
-}, 500)    
 
 function build_Step_Open_Pop_Up_Button () {
     var content_click_to_open_popup = document.querySelectorAll("#ship-address-search")[0],
         content_click_to_open_popup_p = document.createElement('p'),
         content_click_to_open_popup_p_a = document.createElement('a')
 
-    content_click_to_open_popup.parentElement.appendChild(content_click_to_open_popup_p)
+    content_click_to_open_popup.parentElement.parentElement.appendChild(content_click_to_open_popup_p)
     content_click_to_open_popup_p.setAttribute('class','btn-dir-here')
     content_click_to_open_popup_p.appendChild(document.createTextNode('Si no encuentras tu dirección, ingresa '))
     content_click_to_open_popup_p.appendChild(content_click_to_open_popup_p_a)
@@ -185,6 +177,12 @@ function build_Step_Open_Pop_Up_Button () {
     document.querySelector('.step-popup a').addEventListener("click", function() {
         document.querySelector('.step-popup').classList.remove("active")
         document.querySelector('.popup-overlay').classList.remove("active")
-    })    
+    })
+
+    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+        setTimeout(function(){
+            build_Step_Open_Pop_Up_Button ()
+        }, 500)
+    })
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
