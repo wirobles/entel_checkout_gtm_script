@@ -156,12 +156,12 @@ window.addEventListener('popstate', function() {
     }    
 })
 
-document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+/*document.querySelector('.search-another-address-btn').addEventListener("click", function() {
     setTimeout(function(){
         //
         build_Step_Open_Pop_Up_Button ()
     }, 1000)
-})
+})*/
 
 //
 function build_Step_Open_Pop_Up_Button () {
