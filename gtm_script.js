@@ -156,14 +156,14 @@ window.addEventListener('popstate', function() {
     }    
 })
 
-/*document.querySelector('.search-another-address-btn').addEventListener("click", function() {
-    setTimeout(function(){
-        //
-        build_Step_Open_Pop_Up_Button ()
-    }, 1000)
-})*/
+setInterval(function() {
+    if (document.querySelector('.search-another-address-btn')) {
+        document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+            build_Step_Open_Pop_Up_Button ()
+        })
+    }
+}, 500)    
 
-//
 function build_Step_Open_Pop_Up_Button () {
     var content_click_to_open_popup = document.querySelectorAll("#ship-address-search")[0],
         content_click_to_open_popup_p = document.createElement('p'),
