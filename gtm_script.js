@@ -153,25 +153,14 @@ window.addEventListener('popstate', function() {
             // elements to click to open steps popup
             build_Step_Open_Pop_Up_Button ()
         }, 500)
-    }
 
-    // events to open steps popup
-    document.querySelector('.btn-dir-here a').addEventListener("click", function() {
-        document.querySelector('.step-popup').classList.add("active")
-        document.querySelector('.popup-overlay').classList.add("active")
-    })
-
-    document.querySelector('.step-popup a').addEventListener("click", function() {
-        document.querySelector('.step-popup').classList.remove("active")
-        document.querySelector('.popup-overlay').classList.remove("active")
-    })
-
-    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
-        setTimeout(function(){
-            //
-            build_Step_Open_Pop_Up_Button ()
-        }, 500)
-    })
+        document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+            setTimeout(function(){
+                //
+                build_Step_Open_Pop_Up_Button ()
+            }, 500)
+        })
+    }    
 
     function build_Step_Open_Pop_Up_Button () {
         var content_click_to_open_popup = document.querySelectorAll("#ship-address-search")[0],
@@ -184,6 +173,17 @@ window.addEventListener('popstate', function() {
         content_click_to_open_popup_p.appendChild(content_click_to_open_popup_p_a)
         content_click_to_open_popup_p_a.setAttribute('href','javascript:void(0)')
         content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))
+
+        // events to open steps popup
+        document.querySelector('.btn-dir-here a').addEventListener("click", function() {
+            document.querySelector('.step-popup').classList.add("active")
+            document.querySelector('.popup-overlay').classList.add("active")
+        })
+
+        document.querySelector('.step-popup a').addEventListener("click", function() {
+            document.querySelector('.step-popup').classList.remove("active")
+            document.querySelector('.popup-overlay').classList.remove("active")
+        })
     }
 })
 /*--------------------------------------------------------------------------------------------------------------------*/
