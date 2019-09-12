@@ -1,8 +1,10 @@
+
 /* -------------------------------------- */
 /* -------------------------------------- */
 /* ------------ STEP PROFILE ------------ */
 /* -------------------------------------- */
 /* -------------------------------------- */
+
 var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone']
 var array_2 = ['client-company-name', 'client-company-document']
 var loopArray1
@@ -75,7 +77,7 @@ function validateInputsClass (array) {
 /* --------------------------------------- */
 /* --------------------------------------- */
 
-// evento para medir las impresiones del pop-up 'fuera de zona de delivery'
+// event to measure pop-up impressions 'outside the delivery zone'
 var interval_fuera_zona_delivery = setInterval(function() {
     var modal_error_zona_delivery = document.querySelectorAll(".unavailable-message-modal")
     if (modal_error_zona_delivery.length) {
@@ -101,7 +103,7 @@ var interval_fuera_zona_delivery = setInterval(function() {
     }
 }, 500)
 
-// add popup html
+// add steps popup html
 var _body = document.querySelector('body'),
     container = document.createElement('div'),
     overlay = document.createElement('div'),
@@ -120,32 +122,39 @@ var _body = document.querySelector('body'),
     stepPopUp = document.getElementById("step-popup"),
     popupOverlay = document.getElementById("popup-overlay")
 
-    container.setAttribute('class','step-popup')
-    overlay.setAttribute('class','popup-overlay')
-    _body.appendChild(container)
-    _body.appendChild(overlay)
-    container.appendChild(h5)
-    container.appendChild(ul)    
-    ul.appendChild(li1)
-    ul.appendChild(li2)
-    ul.appendChild(li3)
-    container.appendChild(picture)
-    picture.appendChild(source1)
-    picture.appendChild(source2)
-    picture.appendChild(img)
-    container.appendChild(a)
-    h5.appendChild(document.createTextNode('Para poder ubicar tu dirección, sigue estos pasos:'))
-    li1.appendChild(document.createTextNode('Ingresa solo el nombre de la calle, avenida o jirón.'))
-    li2.appendChild(document.createTextNode('Recuerda en agregar tu número y distrito.'))
-    li3.appendChild(document.createTextNode('Finalmente, ubica y selecciona tu dirección en la lista.'))
-    source1.setAttribute('media','(min-width: 650px)')
-    source1.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
-    source2.setAttribute('media','(min-width: 465px)')
-    source2.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
-    img.setAttribute('src','/arquivos/step-popup-img.jpg')
-    a.setAttribute('href','javascript:void(0)')
-    a.setAttribute('id','get-dir-btn')
-    a.appendChild(document.createTextNode('Entendido'))
+container.setAttribute('class','step-popup')
+overlay.setAttribute('class','popup-overlay')
+_body.appendChild(container)
+_body.appendChild(overlay)
+container.appendChild(h5)
+container.appendChild(ul)    
+ul.appendChild(li1)
+ul.appendChild(li2)
+ul.appendChild(li3)
+container.appendChild(picture)
+picture.appendChild(source1)
+picture.appendChild(source2)
+picture.appendChild(img)
+container.appendChild(a)
+h5.appendChild(document.createTextNode('Para poder ubicar tu dirección, sigue estos pasos:'))
+li1.appendChild(document.createTextNode('Ingresa solo el nombre de la calle, avenida o jirón.'))
+li2.appendChild(document.createTextNode('Recuerda en agregar tu número y distrito.'))
+li3.appendChild(document.createTextNode('Finalmente, ubica y selecciona tu dirección en la lista.'))
+source1.setAttribute('media','(min-width: 650px)')
+source1.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
+source2.setAttribute('media','(min-width: 465px)')
+source2.setAttribute('srcset','/arquivos/step-popup-img-desktop.jpg')
+img.setAttribute('src','/arquivos/step-popup-img.jpg')
+a.setAttribute('href','javascript:void(0)')
+a.appendChild(document.createTextNode('Entendido'))
 
-    // elements for events
-    
+// elements for events
+var content_click_to_open_popup = document.querySelectorAll('#ship-address-search'),
+    content_click_to_open_popup_p = document.createElement('p'),
+    content_click_to_open_popup_p_a = document.createElement('a')
+
+content_click_to_open_popup.insertAfter(content_click_to_open_popup_p)
+content_click_to_open_popup_p.appendChild(document.createTextNode('Si no encuentras tu dirección, ingresa '))
+content_click_to_open_popup_p.appendChild(content_click_to_open_popup_p_a)
+content_click_to_open_popup_p_a.setAttribute('href','javascript:void(0)')
+content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))
