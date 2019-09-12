@@ -153,8 +153,8 @@ var content_click_to_open_popup = document.querySelectorAll('#ship-address-searc
     content_click_to_open_popup_p = document.createElement('p'),
     content_click_to_open_popup_p_a = document.createElement('a')
 
-content_click_to_open_popup.insertAfter(content_click_to_open_popup_p)
+/*content_click_to_open_popup.insertAfter(content_click_to_open_popup_p)
 content_click_to_open_popup_p.appendChild(document.createTextNode('Si no encuentras tu dirección, ingresa '))
 content_click_to_open_popup_p.appendChild(content_click_to_open_popup_p_a)
 content_click_to_open_popup_p_a.setAttribute('href','javascript:void(0)')
-content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))
+content_click_to_open_popup_p_a.appendChild(document.createTextNode('aquí'))*/
