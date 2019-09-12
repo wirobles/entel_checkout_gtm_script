@@ -107,7 +107,7 @@ var interval_fuera_zona_delivery = setInterval(function() {
 }, 500)
 /*--------------------------------------------------------------------------------------------------------------------*/
 // add steps popup html
-/*window.addEventListener('popstate', function() {
+window.addEventListener('popstate', function() {
     if (/shipping/i.test(window.location.href)) {
         setTimeout(function(){
             var _body = document.querySelector('body'),
@@ -179,10 +179,10 @@ function build_Step_Open_Pop_Up_Button () {
         document.querySelector('.popup-overlay').classList.remove("active")
     })
 
-    document.querySelector('.search-another-address-btn').addEventListener("click", function() {
+    /*document.querySelector('.search-another-address-btn').addEventListener("click", function() {
         setTimeout(function(){
             build_Step_Open_Pop_Up_Button ()
         }, 500)
-    })
-}*/
+    })*/
+}
 /*--------------------------------------------------------------------------------------------------------------------*/
