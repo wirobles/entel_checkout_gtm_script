@@ -160,7 +160,7 @@ document.querySelector('.search-another-address-btn').addEventListener("click", 
     setTimeout(function(){
         //
         build_Step_Open_Pop_Up_Button ()
-    }, 500)
+    }, 1000)
 })
 
 //
