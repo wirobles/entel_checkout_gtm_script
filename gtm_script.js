@@ -184,5 +184,10 @@ function build_Step_Open_Pop_Up_Button () {
         document.querySelector('.step-popup').classList.remove("active")
         document.querySelector('.popup-overlay').classList.remove("active")
     })
+
+    document.querySelector('.popup-overlay').addEventListener("click", function() {
+        document.querySelector('.step-popup').classList.remove("active")
+        document.querySelector('.popup-overlay').classList.remove("active")
+    })
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
