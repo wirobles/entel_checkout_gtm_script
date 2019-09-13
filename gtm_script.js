@@ -8,6 +8,7 @@
 /*--------------------------------------------------------------------------------------------------------------------*/
 var array_1 = ['client-email', 'client-first-name', 'client-appat', 'client-apmat', 'client-document', 'client-phone']
 var array_2 = ['client-company-name', 'client-company-document']
+
 var loopArray1
 var loopArray2
 
@@ -157,6 +158,11 @@ window.addEventListener('popstate', function() {
 })
 
 function build_Step_Open_Pop_Up_Button () {
+    // remove this element if it exists
+    if(document.querySelector('#gtm-label-shipping p')){
+        document.querySelector('#gtm-label-shipping p').remove()
+    }
+
     var content_click_to_open_popup = document.querySelectorAll("#gtm-label-shipping")[0],
         content_click_to_open_popup_p = document.createElement('p'),
         content_click_to_open_popup_p_a = document.createElement('a')
