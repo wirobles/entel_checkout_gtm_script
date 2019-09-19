@@ -3,9 +3,10 @@
 /* --------------- HOTJAR --------------- */
 /* -------------------------------------- */
 /* -------------------------------------- */
-
-var encuesta = document.getElementById('_hj_poll_container')
-encuesta.remove()
+setTimeout(function(){
+    var encuesta = document.getElementById('_hj_poll_container')
+    encuesta.remove()
+}, 500)
 
 window.onbeforeunload = function(e) {
 	hj('trigger', 'windows_closing')
