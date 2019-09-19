@@ -1,6 +1,3 @@
-window.onbeforeunload = function(e) {
-    return '¡Ayúdanos a mejorar! Cuéntanos el motivo por el cual no completas tu compra:'
-}
 
 /* -------------------------------------- */
 /* -------------------------------------- */
