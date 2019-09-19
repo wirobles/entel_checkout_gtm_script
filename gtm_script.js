@@ -1,5 +1,4 @@
 window.onbeforeunload = function(e) {
-	window.hj('trigger', 'window_closing')
     return '¡Ayúdanos a mejorar! Cuéntanos el motivo por el cual no completas tu compra:'
 }
 
