@@ -5,14 +5,14 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-if (/checkout/.test(window.location.pathname)){
+/*if (/checkout/.test(window.location.pathname)){
     document.querySelectorAll('body')[0].click()
 
     window.onbeforeunload = function(e) {
         hj('trigger', 'windows_closing')
         return 'Seguro que desea salir'
     }
-}
+}*/
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------- */
