@@ -3,7 +3,7 @@
 /* --------------- HOTJAR --------------- */
 /* -------------------------------------- */
 /* -------------------------------------- */
-setTimeout(function(){
+/*setTimeout(function(){
     var encuesta = document.getElementById('_hj_poll_container')
     encuesta.remove()
 }, 500)
@@ -11,7 +11,7 @@ setTimeout(function(){
 window.onbeforeunload = function(e) {
 	hj('trigger', 'windows_closing')
 	return 'Seguro que desea salir'
-}
+}*/
 
 /* -------------------------------------- */
 /* -------------------------------------- */
