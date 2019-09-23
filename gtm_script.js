@@ -5,13 +5,18 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-if (/checkout/.test(window.location.pathname)){
-    document.querySelectorAll('body')[0].click()
+if (/checkout/.test(window.location.pathname)) {
+    var interval_body = setInterval(function() {
+        if (document.querySelectorAll('body').length) {
+            clearInterval(interval_body)
+            document.querySelectorAll('body')[0].click()
 
-    window.onbeforeunload = function(e) {
-        hj('trigger', 'windows_closing')
-        return 'Seguro que desea salir'
-    }
+            window.onbeforeunload = function(e) {
+                hj('trigger', 'windows_closing')
+                return 'Seguro que desea salir'
+            }
+        }
+    }, 100)
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
