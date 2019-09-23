@@ -5,18 +5,12 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-if (/checkout/.test(window.location.pathname)) {
-    var interval_body = setInterval(function() {
-        if (document.querySelectorAll('body').length) {
-            clearInterval(interval_body)
-            document.querySelectorAll('body')[0].click()
-
-            window.onbeforeunload = function(e) {
-                hj('trigger', 'windows_closing')
-                return 'Seguro que desea salir'
-            }
-        }
-    }, 100)
+if (/checkout/.test(window.location.href)) {
+    window.addEventListener('beforeunload', function() {
+        hj('trigger', 'windows_closing')
+        event.preventDefault()
+        event.returnValue = ''
+    })
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
