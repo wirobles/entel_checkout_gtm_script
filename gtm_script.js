@@ -206,3 +206,17 @@ function build_Step_Open_Pop_Up_Button () {
     })
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
+
+/* verificar modal error pago tarjeta */
+var interval_modalerrorpago = setInterval(function() {
+    if (document.querySelectorAll(".payment-unauthorized-modal").length) {
+        if (document.querySelectorAll(".payment-unauthorized-modal")[0].style.display == "block") {
+            clearInterval(interval_modalerrorpago)
+            var dataLayer = window.dataLayer || []
+            dataLayer.push({
+                'event': 'event.modalErrorPago',
+                'eventLabel': document.querySelectorAll(".payment-unauthorized-message3 small")[0].textContent
+            })
+        }
+    }
+}, 100)
