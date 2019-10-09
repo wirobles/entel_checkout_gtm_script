@@ -21,6 +21,7 @@ let removeEvent = function () {
 }
 
 // Innit
+$('#_hj_poll_container').parent().remove()
 addEvent()
 
 window.addEventListener('click', function(e) {
