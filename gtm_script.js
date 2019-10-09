@@ -5,34 +5,51 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-/*let OnBeforeUnLoad = function (e) {
-    hj('trigger', 'windows_closing')
-    event.preventDefault()
-    event.returnValue = 'No te vayas :( ¿Debemos mejorar algo?'
-    return true
+let removePoll = function () {
+    $('#_hj_poll_container').parent().remove()
 }
 
-let addEvent = function () {
-    window.onbeforeunload = OnBeforeUnLoad()
+let addEventExitIntent = function () {
+    // adding event listener
+    window.onbeforeunload = function () {
+        // load trigger hotjar to show poll
+        hj('trigger', 'windows_closing')
+        event.preventDefault()
+        event.returnValue = 'No te vayas :( ¿Debemos mejorar algo?'
+        return true
+    }
 }
 
-let removeEvent = function () {
+let removeEventExitIntent = function () {
+    // removing event listener
     window.onbeforeunload = false
 }
 
-// Innit
-$('#_hj_poll_container').parent().remove()
-addEvent()
+// Searching poll's container to remove
+let setIntervalPoll = setInterval(function () {
+    if (document.querySelectorAll('#_hj_poll_container').length) {
+        clearInterval(setIntervalPoll)
+    } else {
+        removePoll()
+    }
+}, 1000)
 
+// load event listener
+addEventExitIntent()
+
+// add event listener click
 window.addEventListener('click', function(e) {
     var id = e.target.id
 
+    // if click id is payment button
     if (id === 'payment-data-submit') {
-        removeEvent()
+        removeEventExitIntent()
+        removePoll()
     } else {
-        addEvent()
+        addEventExitIntent()
     }
-})*/
+})
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------- */
