@@ -5,13 +5,33 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-/*if (/checkout/.test(window.location.href)) {
-    window.addEventListener('beforeunload', function() {
-        hj('trigger', 'windows_closing')
-        event.preventDefault()
-        event.returnValue = ''
-    })
-}*/
+let OnBeforeUnLoad = function (e) {
+    hj('trigger', 'windows_closing')
+    event.preventDefault()
+    event.returnValue = 'No te vayas :( ¿Debemos mejorar algo?'
+    return true
+}
+
+let addEvent = function () {
+    window.onbeforeunload = OnBeforeUnLoad()
+}
+
+let removeEvent = function () {
+    window.onbeforeunload = false
+}
+
+// Innit
+addEvent()
+
+window.addEventListener('click', function(e) {
+    var id = e.target.id
+
+    if (id === 'payment-data-submit') {
+        removeEvent()
+    } else {
+        addEvent()
+    }
+})
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------- */
