@@ -5,7 +5,7 @@
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-let OnBeforeUnLoad = function (e) {
+/*let OnBeforeUnLoad = function (e) {
     hj('trigger', 'windows_closing')
     event.preventDefault()
     event.returnValue = 'No te vayas :( ¿Debemos mejorar algo?'
@@ -32,7 +32,7 @@ window.addEventListener('click', function(e) {
     } else {
         addEvent()
     }
-})
+})*/
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------- */
