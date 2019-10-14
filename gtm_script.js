@@ -258,3 +258,68 @@ var interval_modalerrorpago = setInterval(function() {
         }
     }
 }, 100)
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* ---------- CAMPAÑA INTERBANK---------- */
+/* -------------------------------------- */
+/* -------------------------------------- */
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+let htmlString = '<div class="entel-checkout-campaign">'
+	+ '<div class="entel-checkout-campaign__close" id="seemore">'
+		+ '<p>VER MÁS</p>'
+		+ '<div class="entel-checkout-campaign__close__arrow"></div>'
+	+ '</div>'
+	+ '<div class="entel-checkout-campaign__close disable" id="hidebox">'
+		+ '<p>OCULTAR</p>'
+		+ '<div class="entel-checkout-campaign__close__arrow rotate-arrow"></div>'
+	+ '</div>'
+	+ '<div class="entel-checkout-campaign__notice">'
+		+ '<label class="label-steps">'
+			+ '<span>!</span>'
+		+ '</label>'
+		+ '<p class="text-notice">'
+			+ '<span>Recuerda que el descuento se verá reflejado al momento de</span> ingresar los datos de tu tarjeta Interbank'
+		+ '</p>'
+		+ '<img class="img-itbk" src="/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank">'
+	+ '</div>'
+	+ '<div class="entel-checkout-campaign__steps disable">'
+		+ '<div class="entel-checkout-campaign__steps__title">'
+			+ '<h3>Obtén hasta</h3>'
+			+ '<img src="/arquivos/forty-percente-dscto-ficha.png" alt="Obtén hasta 40% de dscto con Interbank">'
+			+ '<h3>en tus equipos</h3>'
+		+ '</div>'
+		+ '<h3>al pagar con tu tarjeta Interbank.</h3>'
+		+ '<p>Llévatelo en 3 sencillo pasos:</p>'
+		+ '<label>'
+			+ '<span>1</span> Llena tus datos de identificación'
+		+ '</label>'
+		+ '<label>'
+			+ '<span>2</span> Ingresa la dirección de entrega'
+		+ '</label>'
+		+ '<label>'
+			+ '<span>3</span> Ingresa TUS DATOS DE PAGO'
+		+ '</label>'
+		+ '<p class="text-notice">'
+			+ '<span>Recuerda que el descuento se verá reflejado al momento de</span> ingresar los datos de tu tarjeta Interbank'
+		+ '</p>'
+		+ '<img class="img-itbk" src="/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank">'
+	+ '</div>'
++ '</div>'
+$('body').append(htmlString)
+$('#seemore').on('click', function() {
+    $('.entel-checkout-campaign__notice').addClass('disable')
+    $('.entel-checkout-campaign__steps').removeClass('disable')
+    $('#seemore').addClass('disable')
+    $('#hidebox').removeClass('disable')
+})
+$('#hidebox').on('click', function() {
+    $('.entel-checkout-campaign__notice').removeClass('disable')
+    $('.entel-checkout-campaign__steps').addClass('disable')
+    $('#seemore').removeClass('disable')
+    $('#hidebox').addClass('disable')
+})
