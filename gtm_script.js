@@ -269,14 +269,13 @@ var interval_modalerrorpago = setInterval(function() {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 let campaignHeight = 0,
-    htmlCampaignString = '<div class="entel-checkout-campaign-container"> <div class="entel-checkout-campaign"> <div class="entel-checkout-campaign__open-close"> <span class="text">Ver más</span> <span class="arrow"></span> </div> <div class="entel-checkout-campaign__title"> <h3> <span>Obtén hasta</span> <span class="desc">40<span><div class="symbol">%</div><div class="type-desc">dscto.</div></span></span> <span>en tus equipos<br>al pagar con tu tarjeta crédito y<br>débito Interbank.</span> </h3> </div> <div class="entel-checkout-campaign__content">Llévatelo en 3 sencillos pasos:</div> <ul class="entel-checkout-campaign__steps"> <li>Llena tus datos de identificación</li> <li>Ingresa la dirección de entrega</li> <li>Ingresa TUS DATOS DE PAGO</li> </ul> <div class="entel-checkout-campaign__minimessage"><span class="alert">!</span>Recuerda que el descuento se verá<br>reflejado al momento de <span>ingresar los<br>datos de tu tarjeta Interbank</span> </div> <img class="entel-checkout-campaign__main-img" src="https://enteltest.vteximg.com.br/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank"> </div> </div>'
+    htmlCampaignString = '<div class="entel-checkout-campaign-container"> <div class="entel-checkout-campaign"> <div class="entel-checkout-campaign__open-close"> <span class="text">Ver más</span> <span class="arrow"></span> </div> <div class="entel-checkout-campaign__title"> <h3> <span>Obtén hasta</span> <span class="desc">40<span><div class="symbol">%</div><div class="type-desc">dscto.</div></span></span> <span>en tus equipos<br>al pagar con tu tarjeta crédito y<br>débito Interbank.</span> </h3> </div> <div class="entel-checkout-campaign__content">Llévatelo en 3 sencillos pasos:</div> <ul class="entel-checkout-campaign__steps"> <li>Llena tus datos de identificación</li> <li>Ingresa la dirección de entrega</li> <li>Ingresa TUS DATOS DE PAGO</li> </ul> <div class="entel-checkout-campaign__minimessage">Recuerda que el descuento se verá<br>reflejado al momento de <span>ingresar los<br>datos de tu tarjeta Interbank</span> </div> <img class="entel-checkout-campaign__main-img" src="https://enteltest.vteximg.com.br/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank"> </div> </div>'
 
 $('body').append(htmlCampaignString)
 
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
-$('body').find('.entel-checkout-campaign .entel-checkout-campaign__minimessage .alert').hide()
 
 campaignHeight = $('body').find('.entel-checkout-campaign').height()
 $('body').find('.entel-checkout-campaign-container').height(campaignHeight)
@@ -289,7 +288,6 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
-        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__minimessage .alert').hide()
     } else {
         // button  to close
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close .text').html('Ocultar')
@@ -297,7 +295,6 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').show()
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').show()
         $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').show()
-        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__minimessage .alert').show()
     }
     $(this).toggleClass('active')
     //
