@@ -268,58 +268,36 @@ var interval_modalerrorpago = setInterval(function() {
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+let campaignHeight = 0,
+    htmlCampaignString = '<div class="entel-checkout-campaign-container"> <div class="entel-checkout-campaign"> <div class="entel-checkout-campaign__open-close"> <span class="text">Ver más</span> <span class="arrow"></span> </div> <div class="entel-checkout-campaign__title"> <h3> <span>Obtén hasta</span> <span class="desc">40<span><div class="symbol">%</div><div class="type-desc">dscto.</div></span></span> <span>en tus equipos<br>al pagar con tu tarjeta crédito y<br>débito Interbank.</span> </h3> </div> <div class="entel-checkout-campaign__content">Llévatelo en 3 sencillos pasos:</div> <ul class="entel-checkout-campaign__steps"> <li>Llena tus datos de identificación</li> <li>Ingresa la dirección de entrega</li> <li>Ingresa TUS DATOS DE PAGO</li> </ul> <div class="entel-checkout-campaign__minimessage"> Recuerda que el descuento se verá<br>reflejado al momento de <span>ingresar los<br>datos de tu tarjeta Interbank</span> </div> <img class="entel-checkout-campaign__main-img" src="https://enteltest.vteximg.com.br/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank"> </div> </div>'
 
-let htmlString = '<div class="entel-checkout-campaign">'
-	+ '<div class="entel-checkout-campaign__close" id="seemore">'
-		+ '<p>VER MÁS</p>'
-		+ '<div class="entel-checkout-campaign__close__arrow"></div>'
-	+ '</div>'
-	+ '<div class="entel-checkout-campaign__close disable" id="hidebox">'
-		+ '<p>OCULTAR</p>'
-		+ '<div class="entel-checkout-campaign__close__arrow rotate-arrow"></div>'
-	+ '</div>'
-	+ '<div class="entel-checkout-campaign__notice">'
-		+ '<label class="label-steps">'
-			+ '<span>!</span>'
-		+ '</label>'
-		+ '<p class="text-notice">'
-			+ '<span>Recuerda que el descuento se verá reflejado al momento de</span> ingresar los datos de tu tarjeta Interbank'
-		+ '</p>'
-		+ '<img class="img-itbk" src="/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank">'
-	+ '</div>'
-	+ '<div class="entel-checkout-campaign__steps disable">'
-		+ '<div class="entel-checkout-campaign__steps__title">'
-			+ '<h3>Obtén hasta</h3>'
-			+ '<img src="/arquivos/forty-percente-dscto-ficha.png" alt="Obtén hasta 40% de dscto con Interbank">'
-            + '<h3>en tus equipos</h3>'
-		+ '</div>'
-		+ '<h3>al pagar con tu tarjeta de crédito y <br> débito Interbank.</h3>'
-		+ '<p>Llévatelo en 3 sencillo pasos:</p>'
-		+ '<label>'
-			+ '<span>1</span> Llena tus datos de identificación'
-		+ '</label>'
-		+ '<label>'
-			+ '<span>2</span> Ingresa la dirección de entrega'
-		+ '</label>'
-		+ '<label>'
-			+ '<span>3</span> Ingresa TUS DATOS DE PAGO'
-		+ '</label>'
-		+ '<p class="text-notice">'
-			+ '<span>Recuerda que el descuento se verá reflejado al momento de</span> ingresar los datos de tu tarjeta Interbank'
-		+ '</p>'
-		+ '<img class="img-itbk" src="/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank">'
-	+ '</div>'
-+ '</div>'
-$('body').append(htmlString)
-$('#seemore').on('click', function() {
-    $('.entel-checkout-campaign__notice').addClass('disable')
-    $('.entel-checkout-campaign__steps').removeClass('disable')
-    $('#seemore').addClass('disable')
-    $('#hidebox').removeClass('disable')
-})
-$('#hidebox').on('click', function() {
-    $('.entel-checkout-campaign__notice').removeClass('disable')
-    $('.entel-checkout-campaign__steps').addClass('disable')
-    $('#seemore').removeClass('disable')
-    $('#hidebox').addClass('disable')
+$('body').append(htmlCampaignString)
+
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
+
+campaignHeight = $('body').find('.entel-checkout-campaign').height()
+$('body').find('.entel-checkout-campaign-container').height(campaignHeight)
+
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').click(function() {
+    if ($(this).hasClass('active')) {
+        // button to open
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close .text').html('Ver más')
+        // hidding blocks
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
+    } else {
+        // button  to close
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close .text').html('Ocultar')
+        // showing blocks
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').show()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').show()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').show()
+    }
+    $(this).toggleClass('active')
+    //
+    campaignHeight = $('body').find('.entel-checkout-campaign').height()
+    $('body').find('.entel-checkout-campaign-container').height(campaignHeight)
 })
