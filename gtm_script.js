@@ -277,7 +277,7 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide(
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
 
-$('.entel-checkout-campaign-container').height(48)
+$('.entel-checkout-campaign-container').height(98)
 
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').click(function() {
     if ($(this).hasClass('active')) {
