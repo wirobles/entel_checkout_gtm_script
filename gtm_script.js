@@ -277,10 +277,7 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide(
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
 
-setTimeout(function(){
-    campaignHeight = $('body').find('.entel-checkout-campaign').height()
-    $('body').find('.entel-checkout-campaign-container').height(campaignHeight)
-}, 500)
+$('.entel-checkout-campaign-container').height(48)
 
 $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').click(function() {
     if ($(this).hasClass('active')) {
