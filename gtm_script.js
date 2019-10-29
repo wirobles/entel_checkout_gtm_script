@@ -331,18 +331,14 @@ function load_pickap_in_store() {
             $('body').find('.pickup-in-store').click(function() {
                 // pickup in store off
                 if ($(this).hasClass('active') == true) {
-                    $('body').find('#ship-reference').val($('body').find('#ship-reference').val().replace('Retiro en Tienda Jockey - ',''))
-                    $('body').find('#ship-more-info').removeAttr('disabled')
+                    $('body').find('#ship-reference').val($('body').find('#ship-reference').val().replace('Retiro en Tienda Jockey - ',''))                    
                     $('body').find('#ship-reference').removeAttr('disabled')
-                    $('body').find('.ship-more-info.input.text').css('opacity','')
                     $('body').find('.ship-reference.input.text').css('opacity','')
                     $('body').find('.address-shipping-options').css({'opacity':'','position':'','z-index':''})
                 // pickup in store on
                 } else {
-                    $('body').find('#ship-reference').val('Retiro en Tienda Jockey - ' + $('body').find('#ship-reference').val())
-                    $('body').find('#ship-more-info').attr('disabled','disabled')
+                    $('body').find('#ship-reference').val('Retiro en Tienda Jockey - ' + $('body').find('#ship-reference').val())                    
                     $('body').find('#ship-reference').attr('disabled','disabled')
-                    $('body').find('.ship-more-info.input.text').css('opacity','0.6')
                     $('body').find('.ship-reference.input.text').css('opacity','0.6')
                     $('body').find('.address-shipping-options').css({'opacity':'0','position':'absolute','z-index':'-1'})                
                 }
