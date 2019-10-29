@@ -311,7 +311,7 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-/*let intervalVar,
+let intervalVar,
     stringPickupInStore = '<div class="pickup-in-store-title">O también puedes recoger en tienda</div>'
     + '<p class="pickup-in-store">'
         + '<span class="pickup-in-store__check"></span>'
@@ -324,7 +324,7 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
 // append html into container
 function load_pickap_in_store() {
     intervalVar = setInterval(function () {
-        if (window.location.href.indexOf('shipping') > -1 && window.location.href.indexOf('test') > -1 && $('#map-canvas').length > 0) {
+        if (window.location.href.indexOf('shipping') > -1 && $('#map-canvas').length > 0) {
             $('body').find('.ship-reference.input.text').after(stringPickupInStore)
     
             // event to activate pickup in store
@@ -354,4 +354,4 @@ function load_pickap_in_store() {
     }, 100)
 }
 
-load_pickap_in_store()*/
+load_pickap_in_store()
