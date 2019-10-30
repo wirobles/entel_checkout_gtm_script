@@ -311,7 +311,7 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-let intervalVar,
+/*let intervalVar,
     stringPickupInStore = '<div class="pickup-in-store-title">O también puedes recoger en tienda</div>'
     + '<p class="pickup-in-store">'
         + '<span class="pickup-in-store__check"></span>'
@@ -354,4 +354,4 @@ function load_pickap_in_store() {
     }, 100)
 }
 
-load_pickap_in_store()
+load_pickap_in_store()*/
