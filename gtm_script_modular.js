@@ -9,16 +9,16 @@ $(document).ready(function() {
 
     // close promo
     closePromo = function () {
-        $('.e-promo-section').removeClass('e-promo-section--state--open')
-        $('.e-promo-section__open-button').removeClass('active')
+        $('body').find('.e-promo-section').removeClass('e-promo-section--state--open')
+        $('body').find('.e-promo-section__open-button').removeClass('active')
 
         $(document).unbind('close.promo')
     }
 
     // open promo
     openPromo = function () {
-        $('.e-promo-section').addClass('e-promo-section--state--open')
-        $('.e-promo-section__open-button').addClass('active')
+        $('body').find('.e-promo-section').addClass('e-promo-section--state--open')
+        $('body').find('.e-promo-section__open-button').addClass('active')
 
         $(document).on('close.promo', function() {
             closePromo ()
@@ -37,12 +37,12 @@ $(document).ready(function() {
     })
 
     $('body').find('.open-legal-popup').click(function() {
-        $('.e-promo-overlay').addClass('e-promo-overlay--state--open')
-        $('.e-promo-legales-popup').addClass('e-promo-legales-popup--state--open')
+        $('body').find('.e-promo-overlay').addClass('e-promo-overlay--state--open')
+        $('body').find('.e-promo-legales-popup').addClass('e-promo-legales-popup--state--open')
     })
 
     $('body').find('.e-promo-legales-popup__close-button, .e-promo-overlay').click(function() {
-        $('.e-promo-overlay').removeClass('e-promo-overlay--state--open')
-        $('.e-promo-legales-popup').removeClass('e-promo-legales-popup--state--open')
+        $('body').find('.e-promo-overlay').removeClass('e-promo-overlay--state--open')
+        $('body').find('.e-promo-legales-popup').removeClass('e-promo-legales-popup--state--open')
     })
 })
