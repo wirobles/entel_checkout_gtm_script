@@ -1,119 +1,149 @@
-let intervalPickapInStore,
-    intervalDetectGoogleMaps,
-    intervalEditAddress,
-    stringDeliveryMode = '<div class="delivery-mode-title">O también puedes recoger en tienda</div>'
-    + '<div id="delivery-home" class="delivery-button active">'
-        + '<span class="big-radio"></span>'
-        + '<img width="35" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-home.png"/>'
-        + '<span class="text">Envío a<br>domicilio</span>'
-    + '</div>'
-    + '<div id="delivery-store" class="delivery-button">'
-        + '<span class="big-radio"></span>'
-        + '<img width="30" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-store.png"/>'
-        + '<span class="text">Recojo en<br>tienda GRATIS</span>'
-    + '</div>',
-    stringDeliveryModeTriangle = '<span class="delivery-mode-triangle"></span>',
-    stringDeliveryModeLabel = '<span class="delivery-mode-label">Seleccionar tienda</span>'
+$(document).ready(function ($) {
 
-function load_pickap_in_store() {
-    // start interval
-    intervalPickapInStore = setInterval(function () {
-        if (window.location.href.indexOf('shipping') > -1) {
-            // remove html
-            $('body').find('.delivery-mode-title').remove()
-            $('body').find('#delivery-home').remove()
-            $('body').find('#delivery-store').remove()
-            // appending html
-            $('body').find('#shipping-data .accordion-inner').before(stringDeliveryMode)
+    let global = (function() {
+        // objects
+        let html = {
+            insertButtons : function() {
+                let stringDeliveryMode = '<div class="delivery-mode-title">O también puedes recoger en tienda</div>'
+                + '<div id="delivery-home" class="delivery-button active">'
+                    + '<span class="big-radio"></span>'
+                    + '<img width="35" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-home.png"/>'
+                    + '<span class="text">Envío a<br>domicilio</span>'
+                + '</div>'
+                + '<div id="delivery-store" class="delivery-button">'
+                    + '<span class="big-radio"></span>'
+                    + '<img width="30" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-store.png"/>'
+                    + '<span class="text">Recojo en<br>tienda GRATIS</span>'
+                + '</div>'
 
-            $('body').find('#delivery-home').click(function() {
-                // reset address stores - reset styles to input
-                $('body').find('.delivery-button').removeClass('active')
-                $(this).addClass('active')
-                $('#ship-address-search').removeClass('active')
-                $('#ship-address-search').val('')
-                // reset read only
-                $('#ship-address-search').removeAttr('readonly')
-                // clear elements
-                $('body').find('.delivery-mode-label').remove()
-                $('body').find('.delivery-mode-triangle').remove()
-                // setting value in localstorage
-                window.localStorage.deliveryModeFlag = 'pickup-in-home'
-            })
-
-            $('body').find('#delivery-store').click(function() {
-                // setting address stores - setting styles to input
-                $('body').find('.delivery-button').removeClass('active')
-                $(this).addClass('active')
-                $('#ship-address-search').addClass('active')
-                $('#ship-address-search').val('Av Jose Larco 497, Lima 15074')
-                // read only
-                $('#ship-address-search').attr('readonly','readonly')
-                // add elements
+                $('body').find('#shipping-data .accordion-inner').before(stringDeliveryMode)
+            },
+            removeButtons : function() {
+                $('body').find('.delivery-mode-title').remove()
+                $('body').find('#delivery-home').remove()
+                $('body').find('#delivery-store').remove()
+            },
+            insertSelectElements : function() {
+                let stringDeliveryModeTriangle = '<span class="delivery-mode-triangle"></span>',
+                    stringDeliveryModeLabel = '<span class="delivery-mode-label">Seleccionar tienda</span>'
                 $('#ship-address-search').after(stringDeliveryModeTriangle)
                 $('#ship-address-search').after(stringDeliveryModeLabel)
-                // setting value in localstorage
-                window.localStorage.deliveryModeFlag = 'pickup-in-store'
-            })
-
-            clearInterval(intervalPickapInStore)
-        }
-    }, 100)
-}
-
-function load_detect_googlemaps() {
-    // start interval
-    intervalDetectGoogleMaps = setInterval(function () {
-        if (window.location.href.indexOf('shipping') > -1 && $('#map-canvas').length > 0) {
-            // remove html
-            $('body').find('.delivery-mode-title').remove()
-            $('body').find('#delivery-home').remove()
-            $('body').find('#delivery-store').remove()
-            $('body').find('.delivery-mode-frame').remove()
-
-            if ( window.localStorage.deliveryModeFlag === 'pickup-in-store' ) {
+            },            
+            removeSelectElements : function() {
+                $('body').find('.delivery-mode-label').remove()
+                $('body').find('.delivery-mode-triangle').remove()
+            },
+            setSelectStyle : function() {
+                // setting values to Address input
+                $('#ship-address-search').addClass('active')
+                $('#ship-address-search').val('Av Jose Larco 497, Lima 15074')
+                // setting read only
+                $('#ship-address-search').attr('readonly','readonly')
+            },
+            unSetSelectStyle : function() {
+                // removing active class to Address input
+                $('#ship-address-search').removeClass('active')
+                $('#ship-address-search').val('')
+                // removing read only
+                $('#ship-address-search').removeAttr('readonly')
+            },
+            insertMapFrame : function() {
+                $('body').find('#map-canvas').after('<div class="delivery-mode-frame"><div>')
+            },
+            removeMapFrame : function() {
+                $('body').find('.delivery-mode-frame').remove()
+            },
+            setExtraInfoValues : function() {
                 $('body').find('#shipping-data .ship-more-info').val('recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda')
                 $('body').find('#shipping-data .ship-reference').val('Recojo en tienda - TP LARCO')
                 $('body').find('#shipping-data .ship-more-info').css({'opacity':'0','position':'absolute','z-index':'-1'})
                 $('body').find('#shipping-data .ship-reference').css({'opacity':'0','position':'absolute','z-index':'-1'})
-                // append frame
-                $('body').find('#map-canvas').after('<div class="delivery-mode-frame"><div>')
-
-            } else {
+            },
+            unSetExtraInfoValues : function() {
                 $('body').find('#shipping-data .ship-more-info').val('')
                 $('body').find('#shipping-data .ship-reference').val('')
                 $('body').find('#shipping-data .ship-more-info').css({'opacity':'','position':'','z-index':''})
                 $('body').find('#shipping-data .ship-reference').css({'opacity':'','position':'','z-index':''})
-                $('body').find('.delivery-mode-frame').remove()
             }
-
-            // event click
-            $('body').find('.search-another-address-btn').click(function() {
-                load_detect_googlemaps()
-                load_pickap_in_store()
-            })
-
-            clearInterval(intervalDetectGoogleMaps)
         }
-    }, 100)
-}
 
-function load_edit_address() {
-    // start interval
-    intervalEditAddress = setInterval(function () {
-        if (window.location.href.indexOf('payment') > -1 && $('#edit-shipping-data').length > 0) {
-            // event click
-            $('body').find('#edit-shipping-data').click(function() {
-                console.log('asdasdasdasdd')
-                load_edit_address()
-                load_detect_googlemaps()
-            })
-
-            clearInterval(intervalEditAddress)
+        let events = {
+            optionButtons : function() {
+                // click entrega a domicilio
+                $('body').find('#delivery-home').click(function() {
+                    // remove active
+                    $('body').find('.delivery-button').removeClass('active')
+                    $(this).addClass('active')
+                    // config input style
+                    html.unSetSelectStyle()
+                    html.removeSelectElements()
+                    window.localStorage.deliveryModeFlag = 'pickup-in-home'
+                })
+        
+                // click recojo en tienda
+                $('body').find('#delivery-store').click(function() {
+                    // add active
+                    $('body').find('.delivery-button').removeClass('active')
+                    $(this).addClass('active')
+                    // config off input style
+                    html.setSelectStyle()
+                    html.insertSelectElements()
+                    window.localStorage.deliveryModeFlag = 'pickup-in-store'
+                })
+            },
+            searchOtherAddress : function() {
+                $('body').find('.search-another-address-btn').click(function() {
+                    //load some function
+                })
+            }
         }
-    }, 100)
-}
 
-load_edit_address()
-load_detect_googlemaps()
-load_pickap_in_store()
+        let validation = {
+            modalityChosed : function() {
+                html.removeButtons()
+                html.removeMapFrame()                    
+    
+                if ( window.localStorage.deliveryModeFlag === 'pickup-in-store' ) {
+                    html.setExtraInfoValues()
+                    html.insertMapFrame()
+                } else {
+                    html.unSetExtraInfoValues()
+                    html.removeMapFrame()
+                }
+            },
+            googleMap : function() {
+                let intervalDetectGoogleMaps
+
+                intervalDetectGoogleMaps = setInterval(function() {
+                    if ($('#map-canvas').length) {
+                        html.removeButtons()
+                        clearInterval(intervalDetectGoogleMaps)
+                    }
+                }, 100)
+            },
+            shippingStep : function() {
+                window.onpopstate = function(event) {
+                    if (/shipping/i.test(document.location.href)) {
+                        html.insertButtons()
+                        events.optionButtons()
+                        validation.googleMap()
+                    }
+                }
+            }        
+        }
+
+        let load_validation = function() {
+            validation.shippingStep()
+        }
+
+        let initialize = function() {
+            load_validation()
+        }
+
+        return {
+            init : initialize
+        }
+    })()
+
+    global.init()
+})
