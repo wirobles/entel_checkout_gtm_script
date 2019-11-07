@@ -93,7 +93,11 @@ $(document).ready(function ($) {
             },
             searchOtherAddress : function() {
                 $('body').find('.search-another-address-btn').click(function() {
-                    //load some function
+                    html.removeButtons()
+                    html.insertButtons()
+                    events.optionButtons()
+                    validation.googleMap()
+                    window.localStorage.deliveryModeFlag = 'pickup-in-home'
                 })
             }
         }
@@ -117,6 +121,8 @@ $(document).ready(function ($) {
                 intervalDetectGoogleMaps = setInterval(function() {
                     if ($('#map-canvas').length) {
                         html.removeButtons()
+                        validation.modalityChosed()
+                        events.searchOtherAddress()
                         clearInterval(intervalDetectGoogleMaps)
                     }
                 }, 100)
@@ -124,20 +130,17 @@ $(document).ready(function ($) {
             shippingStep : function() {
                 window.onpopstate = function(event) {
                     if (/shipping/i.test(document.location.href)) {
+                        html.removeButtons()
                         html.insertButtons()
                         events.optionButtons()
                         validation.googleMap()
                     }
                 }
-            }        
-        }
-
-        let load_validation = function() {
-            validation.shippingStep()
+            }
         }
 
         let initialize = function() {
-            load_validation()
+            validation.shippingStep()
         }
 
         return {
