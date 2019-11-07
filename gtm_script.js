@@ -318,58 +318,41 @@ load_pickap_in_store()*/
 
 /* -------------------------------------- */
 /* -------------------------------------- */
-/* -------- CAMPAÑA PAGOEFECTIVO -------- */
+/* ---------- CAMPAÑA INTERBANK---------- */
 /* -------------------------------------- */
 /* -------------------------------------- */
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-let closePromo,
-    openPromo,
-    htmlCampaignString = '<div class="e-promo-section"> <a href="javascript:void(0)" class="e-promo-section__open-button"><img src="https://www.entel.pe/wp-content/uploads/2019/11/top-arrow.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/top-arrow.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/top-arrow@2x.png 2x" alt="abrir"></a><div class="e-promo-section__closed-content"><h5>Promoción de infarto <br> Obtén S/50 de dscto.</h5><p>pagando con PagoEfectivo</p> <img src="https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-close.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-close.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-close@2x.png 2x"></div><div class="e-promo-section__openned-content"><h5>Promoción de infarto</h5><p>pagando con PagoEfectivo</p> <img src="https://www.entel.pe/wp-content/uploads/2019/11/pagoefectivo-descuento.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/pagoefectivo-descuento.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/pagoefectivo-descuento@2x.png 2x"><div class="e-promo-section__openned-content__steps"><p>Obtén el descuento en <strong>3 sencillos pasos</strong>:</p><ul><li class="step-one"><i>1</i> <span>Llena tus datos de identificación</span></li><li class="step-two"><i>2</i> <span>Ingresa la dirección de entrega</span></li><li class="step-three"><i>3</i> <span>Selecciona <strong>PagoEfectivo </strong></span></li></ul><div class="e-promo-section__openned-content__steps__disclaimer"> <img src="https://www.entel.pe/wp-content/uploads/2019/11/admiration-icon.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/admiration-icon.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/admiration-icon@2x.png 2x"><p>Recuerda que el descuento se verá reflejado al momento de <strong>seleccionar PagoEfectivo</strong></p></div></div><a href="javscript:void(0)" class="e-promo-section__openned-content__legals-link open-legal-popup">Ver condiciones <img src="https://www.entel.pe/wp-content/uploads/2019/11/right-icon.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/right-icon.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/right-icon@2x.png 2x"></a></div></div><div class="e-promo-overlay"></div><div class="e-promo-legales-popup"> <a href="javascript:void(0)" class="e-promo-legales-popup__close-button"> <img src="https://www.entel.pe/wp-content/uploads/2019/11/close-icon.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/close-icon.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/close-icon@2x.png 2x"> </a><div class="e-promo-legales-popup__content"><h5>Condiciones generales</h5> <img src="https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-legals.png" srcset="https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-legals.png 1x, https://www.entel.pe/wp-content/uploads/2019/11/pago-efectivo-legals@2x.png 2x"><p>Válido para portabilidad en modalidad Pago único (Postpago a Postpago) de personas naturales y RUC 10, contratando un plan postpago de la plancha comercial vigente. Equipo sujeto a evaluación crediticia y con acuerdo de venta de equipo en cuotas a 18 meses. Disponible exclusivamente en Tienda ENTEL.PE del 04/11/19 al 06/11/19 y/o hasta agotar stock mínimo: 50 unidades. Entrega de equipos vía delivery solo en algunas zonas de Lima Metropolitana, sujeto a cobertura. Una promoción por cliente.</p></div></div>'
+let htmlCampaignString = '<div class="entel-checkout-campaign-container"> <div class="entel-checkout-campaign"> <div class="entel-checkout-campaign__open-close"> <span class="text">Ver más</span> <span class="arrow"></span> </div> <div class="entel-checkout-campaign__title"> <h3> <span>Obtén hasta</span> <span class="desc">40<span><div class="symbol">%</div><div class="type-desc">dscto.</div></span></span> <span>en tus equipos<br>al pagar con tu tarjeta crédito y<br>débito Interbank.</span> </h3> </div> <div class="entel-checkout-campaign__content">Llévatelo en 3 sencillos pasos:</div> <ul class="entel-checkout-campaign__steps"> <li>Llena tus datos de identificación</li> <li>Ingresa la dirección de entrega</li> <li>Ingresa TUS DATOS DE PAGO</li> </ul> <div class="entel-checkout-campaign__minimessage">Recuerda que el descuento se verá<br>reflejado al momento de <span>ingresar los<br>datos de tu tarjeta Interbank</span> </div> <img class="entel-checkout-campaign__main-img" src="https://enteltest.vteximg.com.br/arquivos/image-bar-interbank-v2.png" alt="Obtén hasta 40% de dscto con Interbank"> </div> </div>'
 
-$('body').append(htmlCampaignString) 
+$('body').append(htmlCampaignString)
 
-// hearing event
-$(document).on('click', function (evt) {
-    $(document).trigger('close.promo')
-})
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
 
-// close promo
-closePromo = function () {
-    $('body').find('.e-promo-section').removeClass('e-promo-section--state--open')
-    $('body').find('.e-promo-section__open-button').removeClass('active')
+$('.entel-checkout-campaign-container').height(98)
 
-    $(document).unbind('close.promo')
-}
-
-// open promo
-openPromo = function () {
-    $('body').find('.e-promo-section').addClass('e-promo-section--state--open')
-    $('body').find('.e-promo-section__open-button').addClass('active')
-
-    $(document).on('close.promo', function() {
-        closePromo ()
-    })
-}
-
-// click promo section event
-$('body').find('.e-promo-section').click(function (e) {
-    if ($(this).hasClass('e-promo-section--state--open')) {
-        e.stopPropagation()
-        closePromo ()
+$('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').click(function() {
+    if ($(this).hasClass('active')) {
+        // button to open
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close .text').html('Ver más')
+        // hidding blocks
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').hide()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').hide()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').hide()
+        // setting hight
+        $('.entel-checkout-campaign-container').height(98)
     } else {
-        e.stopPropagation()
-        openPromo ()
+        // button  to close
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close .text').html('Ocultar')
+        // showing blocks
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__title').show()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__content').show()
+        $('body').find('.entel-checkout-campaign .entel-checkout-campaign__steps').show()
+        // setting hight
+        $('.entel-checkout-campaign-container').height(310)
     }
-})
-
-$('body').find('.open-legal-popup').click(function() {
-    $('body').find('.e-promo-overlay').addClass('e-promo-overlay--state--open')
-    $('body').find('.e-promo-legales-popup').addClass('e-promo-legales-popup--state--open')
-})
-
-$('body').find('.e-promo-legales-popup__close-button, .e-promo-overlay').click(function() {
-    $('body').find('.e-promo-overlay').removeClass('e-promo-overlay--state--open')
-    $('body').find('.e-promo-legales-popup').removeClass('e-promo-legales-popup--state--open')
+    $(this).toggleClass('active')
 })
