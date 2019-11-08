@@ -422,14 +422,12 @@ let initialize = function() {
         .done(function(orderForm) {
             // vars
             var productID = orderForm.items[0].productId,
-                idsBuyBack = [6177,31932,31933,31939,31947,31956,32003,31901,31903,32639,32640,32643,32663,31797,31798,31801,31802,31804,31806]
+                idsBuyBack = [31932,31933,31939,31947,31956,32003,31901,31903,32639,32640,32643,32663,31797,31798,31801,31802,31804,31806]
 
             // validating
             if (productID && idsBuyBack.includes(parseInt(productID))) {
                 // load 
                 validation.shippingStep()
-            } else {
-                console.log('Invocando a Willy')
             }
         })
     }
