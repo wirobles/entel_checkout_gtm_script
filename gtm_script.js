@@ -444,7 +444,7 @@ let initialize = function() {
         })
     }
 
-    validation.orderPlacedStep()
+    //validation.orderPlacedStep()
 }
 
 initialize()
