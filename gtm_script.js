@@ -413,6 +413,18 @@ let validation = {
                 events.editAddress()
             }
         }
+    },
+    orderPlacedStep : function() {
+        if (location.href.indexOf('catalogo.entel.pe/checkout/orderPlaced' > -1)) {
+            var intervalHideDelivery = setInterval(function () {
+                if ($('body').find('span.street').text() === 'Avenida Jose Larco' && $('body').find('span.number').text() === '497') {
+                    $('body').find('h2.f4.mb0.lh-copy').parent().hide()
+        ​
+                    clearInterval(intervalHideDelivery)
+                }
+            }, 1000)
+        ​
+        }
     }
 }
 
@@ -431,6 +443,8 @@ let initialize = function() {
             }
         })
     }
+
+    validation.orderPlacedStep()
 }
 
 initialize()
