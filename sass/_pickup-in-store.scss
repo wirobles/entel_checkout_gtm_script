@@ -8,26 +8,9 @@
     width: 100%;
 }
 
-#delivery-home {
-    margin-right: 20px;
-    cursor: auto;
-
-    img {
-        -webkit-filter: grayscale(100%);
-        -moz-filter: grayscale(100%);
-        -ms-filter: grayscale(100%);
-        -o-filter: grayscale(100%);
-        filter: grayscale(100%);        
-    }
-
-    span.text {
-        color: #9e9fa1;
-    }
-}
-
 .delivery-button {
     margin-bottom: 10px;
-    border: 1px solid #ffffff;
+    border: 1px solid #9e9fa1;
     background-color: #ffffff;
     color: #0154A0;
     border-radius: 5px;
@@ -54,41 +37,53 @@
     }
 
     .big-radio {
+        background-color: transparent;
         display: inline-block;
-        vertical-align: middle;            
-        margin-right: 20px;            
-        border-radius: 50%;
-        border: 6px solid #9E9FA1;
+        vertical-align: middle;
+        margin-right: 20px;
+        border: 2px solid #ff6702;
+        border-radius: 4px;
         width: 20px;
         height: 20px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 15px;
         -webkit-transition: all 300ms ease 0s;
         -moz-transition: all 300ms ease 0s;
         -o-transition: all 300ms ease 0s;
         transition: all 300ms ease 0s;
-    }
 
-    &.active {
-        border: 1px solid #FF6702;        
-
-        // radio button
-        .big-radio {
-            border: 6px solid #FF6702;
-        }
-
-        // orange angle
         &::before {
             content: '';
             width: 8px;
             height: 8px;
             background-color: #ffffff;
-            border-left: 1px solid #FF6702;
-            border-bottom: 1px solid #FF6702;
+            border-left: 1px solid #9e9fa1;
+            border-bottom: 1px solid #9e9fa1;
             position: absolute;
             margin: auto;
             left: 0;
             right: 0;
             bottom: -5px;
             transform: rotate(-45deg);
+            -webkit-transition: all 300ms ease 0s;
+            -moz-transition: all 300ms ease 0s;
+            -o-transition: all 300ms ease 0s;
+            transition: all 300ms ease 0s;
+        }
+    }
+
+    &.active .big-radio::before {
+        border-left: 1px solid #FF6702;
+        border-bottom: 1px solid #FF6702;
+    }
+
+    &.active {
+        border: 1px solid #FF6702;
+
+        .big-radio {
+            background-color: #FF6702;
+            background-image: url('https://enteltest.vteximg.com.br/arquivos/icon-check-help-modal.png');            
         }
     }
 }
@@ -108,7 +103,7 @@
 .delivery-mode-label {
     height: 33px;
     line-height: 33px;
-    background-color: #ffffff;
+    background-color: #f4f4f4;
     color: #9e9fa1;
     position: absolute;
     left: 1px;
@@ -118,6 +113,10 @@
     padding: 0 5px;
     text-align: left;
     font-size: 13px;
+
+    &.active {
+        background-color: #ffffff;
+    }
 }
 
 #ship-address-search.active {

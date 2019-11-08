@@ -1,16 +1,11 @@
 $(document).ready(function ($) {
 
     let global = (function() {
-        // objects
+        
         let html = {
             insertButtons : function() {
-                let stringDeliveryMode = '<div class="delivery-mode-title">Recuerda que la entrega del equipo se realizará el día 15 de noviembre en la tienda Av. Larco 497 - Miraflores, Lima a las 00:00 hrs</div>'
-                + '<div id="delivery-home" class="delivery-button">'
-                    + '<span class="big-radio"></span>'
-                    + '<img width="35" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-home.png"/>'
-                    + '<span class="text">Envío a<br>domicilio</span>'
-                + '</div>'
-                + '<div id="delivery-store" class="delivery-button active">'
+                let stringDeliveryMode = '<div class="delivery-mode-title">Recuerda que la entrega del equipo se realizará el día 15 de noviembre en la tienda Av. Larco 497 - Miraflores, Lima a las 00:00 hrs</div>'                
+                + '<div id="delivery-store" class="delivery-button">'
                     + '<span class="big-radio"></span>'
                     + '<img width="30" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-store.png"/>'
                     + '<span class="text">Recojo en<br>tienda GRATIS</span>'
@@ -20,7 +15,6 @@ $(document).ready(function ($) {
             },
             removeButtons : function() {
                 $('body').find('.delivery-mode-title').remove()
-                $('body').find('#delivery-home').remove()
                 $('body').find('#delivery-store').remove()
             },
             insertSelectElements : function() {
@@ -39,6 +33,7 @@ $(document).ready(function ($) {
                 $('#ship-address-search').val('Av Jose Larco 497, Lima 15074')
                 // setting read only
                 $('#ship-address-search').attr('readonly','readonly')
+                $('#ship-address-search').attr('disabled','disabled')
             },
             unSetSelectStyle : function() {
                 // removing active class to Address input
@@ -68,25 +63,43 @@ $(document).ready(function ($) {
         }
 
         let events = {
+            clickButton : function() {
+                $('body').find('#delivery-store').click(function() {
+
+                    if($(this).hasClass('active') === true ) {
+                        $('.delivery-mode-label').removeClass('active')
+                        $('#ship-address-search').attr('disabled','disabled')
+                    } else {
+                        $('.delivery-mode-label').addClass('active')
+                        $('#ship-address-search').removeAttr('disabled')
+                    }
+
+                    $(this).toggleClass('active')
+                })
+            },
             searchOtherAddress : function() {
-                $('body').find('.search-another-address-btn').click(function() {
-                    html.removeSelectElements()
-                    html.removeButtons()
-                    html.insertButtons()
-                    html.setExtraInfoValues()
-                    html.insertMapFrame()
+                $('body').find('.search-another-address-btn').click(function() {                    
                     setTimeout(function(){
+                        html.removeButtons()
+                        html.insertButtons()
+                        events.clickButton()
                         html.setSelectStyle()
                         html.insertSelectElements()
+                        validation.googleMap()
                     }, 500)
-                    validation.googleMap()
-                    window.localStorage.deliveryModeFlag = 'pickup-in-store'
                 })
             },
             editAddress : function() {
                 $('body').find('#edit-shipping-data').click(function() {
-                    setTimeout(function(){
-                        validation.googleMap()
+                    html.removeButtons()
+                    html.setExtraInfoValues()
+                    html.insertMapFrame()
+                    events.searchOtherAddress()
+                    setTimeout(function() {
+                        $('.shipping-option-item-name').html('Recojo en tienda')
+                        $('.shipping-option-item-value').html(' - 5 de noviembre')
+                        $('.shipping-option-item-sep').remove()
+                        $('.shipping-option-item-time.delivery-estimate').remove()
                     }, 500)
                 })
             }
@@ -98,37 +111,38 @@ $(document).ready(function ($) {
 
                 intervalDetectGoogleMaps = setInterval(function() {
                     if ($('#map-canvas').length) {
-                        setTimeout(function(){
+                        //
+                        html.removeButtons()
+                        html.setExtraInfoValues()
+                        html.insertMapFrame()
+                        events.searchOtherAddress()
+                        setTimeout(function() {
                             $('.shipping-option-item-name').html('Recojo en tienda')
                             $('.shipping-option-item-value').html(' - 5 de noviembre')
                             $('.shipping-option-item-sep').remove()
-                            $('.shipping-option-item-time.delivery-estimate').remove()
+                            $('.shipping-option-item-time.delivery-estimate').remove()                            
                         }, 500)
-                        html.removeButtons()
-                        html.setExtraInfoValues()
-                        html.insertMapFrame()                        
-                        events.searchOtherAddress()
-                        clearInterval(intervalDetectGoogleMaps)
+                        setInterval(function() {
+                            $('.description .shipping-date.pull-left').remove()
+                        }, 100)
+                        clearInterval(intervalDetectGoogleMaps)                        
                     }
                 }, 100)
             },
             shippingStep : function() {
                 window.onpopstate = function(event) {
                     if (/shipping/i.test(document.location.href)) {
-                        html.removeSelectElements()
-                        html.removeButtons()
                         html.insertButtons()
-                        setTimeout(function() {
+                        events.clickButton()
+                        setTimeout(function(){
                             html.setSelectStyle()
-                            html.removeSelectElements()
-                            html.insertSelectElements()                            
+                            html.insertSelectElements()
                         }, 500)
                         validation.googleMap()
-
                     } else if (/payment/i.test(document.location.href)) {
-                        setTimeout(function(){
+                        setInterval(function() {
                             $('.description .shipping-date.pull-left').remove()
-                        }, 2000)
+                        }, 100)
                         events.editAddress()
                     }
                 }
@@ -136,7 +150,20 @@ $(document).ready(function ($) {
         }
 
         let initialize = function() {
-            validation.shippingStep()
+            if (!(typeof vtexjs === 'undefined' || vtexjs === null)) {
+                vtexjs.checkout.getOrderForm()
+                .done(function(orderForm) {
+                    // vars
+                    var productID = orderForm.items[0].productId,
+                        idsBuyBack = [31932, 31933, 31939, 31947, 31956, 32003, 31901, 31903, 32639, 32640, 32643, 32663, 31797, 31798, 31801, 31802, 31804, 31806]
+
+                    // validating
+                    if (productID && idsBuyBack.includes(parseInt(productID))) {
+                        // load 
+                        validation.shippingStep()
+                    }
+                })
+            }
         }
 
         return {
