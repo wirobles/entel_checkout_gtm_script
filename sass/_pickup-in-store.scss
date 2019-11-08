@@ -10,6 +10,19 @@
 
 #delivery-home {
     margin-right: 20px;
+    cursor: auto;
+
+    img {
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        filter: grayscale(100%);        
+    }
+
+    span.text {
+        color: #9e9fa1;
+    }
 }
 
 .delivery-button {
@@ -55,7 +68,7 @@
     }
 
     &.active {
-        border: 1px solid #FF6702;
+        border: 1px solid #FF6702;        
 
         // radio button
         .big-radio {
@@ -108,6 +121,7 @@
 }
 
 #ship-address-search.active {
+    z-index: 5;
     background-color: transparent;
     position: relative;
     font-size: 0;

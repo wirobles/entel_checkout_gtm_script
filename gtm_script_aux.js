@@ -4,13 +4,13 @@ $(document).ready(function ($) {
         // objects
         let html = {
             insertButtons : function() {
-                let stringDeliveryMode = '<div class="delivery-mode-title">O también puedes recoger en tienda</div>'
-                + '<div id="delivery-home" class="delivery-button active">'
+                let stringDeliveryMode = '<div class="delivery-mode-title">Recuerda que la entrega del equipo se realizará el día 15 de noviembre en la tienda Av. Larco 497 - Miraflores, Lima a las 00:00 hrs</div>'
+                + '<div id="delivery-home" class="delivery-button">'
                     + '<span class="big-radio"></span>'
                     + '<img width="35" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-home.png"/>'
                     + '<span class="text">Envío a<br>domicilio</span>'
                 + '</div>'
-                + '<div id="delivery-store" class="delivery-button">'
+                + '<div id="delivery-store" class="delivery-button active">'
                     + '<span class="big-radio"></span>'
                     + '<img width="30" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-store.png"/>'
                     + '<span class="text">Recojo en<br>tienda GRATIS</span>'
@@ -68,60 +68,45 @@ $(document).ready(function ($) {
         }
 
         let events = {
-            optionButtons : function() {
-                // click entrega a domicilio
-                $('body').find('#delivery-home').click(function() {
-                    // remove active
-                    $('body').find('.delivery-button').removeClass('active')
-                    $(this).addClass('active')
-                    // config input style
-                    html.unSetSelectStyle()
+            searchOtherAddress : function() {
+                $('body').find('.search-another-address-btn').click(function() {
                     html.removeSelectElements()
-                    window.localStorage.deliveryModeFlag = 'pickup-in-home'
-                })
-        
-                // click recojo en tienda
-                $('body').find('#delivery-store').click(function() {
-                    // add active
-                    $('body').find('.delivery-button').removeClass('active')
-                    $(this).addClass('active')
-                    // config off input style
-                    html.setSelectStyle()
-                    html.insertSelectElements()
+                    html.removeButtons()
+                    html.insertButtons()
+                    html.setExtraInfoValues()
+                    html.insertMapFrame()
+                    setTimeout(function(){
+                        html.setSelectStyle()
+                        html.insertSelectElements()
+                    }, 500)
+                    validation.googleMap()
                     window.localStorage.deliveryModeFlag = 'pickup-in-store'
                 })
             },
-            searchOtherAddress : function() {
-                $('body').find('.search-another-address-btn').click(function() {
-                    html.removeButtons()
-                    html.insertButtons()
-                    events.optionButtons()
-                    validation.googleMap()
-                    window.localStorage.deliveryModeFlag = 'pickup-in-home'
+            editAddress : function() {
+                $('body').find('#edit-shipping-data').click(function() {
+                    setTimeout(function(){
+                        validation.googleMap()
+                    }, 500)
                 })
             }
         }
 
         let validation = {
-            modalityChosed : function() {
-                html.removeButtons()
-                html.removeMapFrame()                    
-    
-                if ( window.localStorage.deliveryModeFlag === 'pickup-in-store' ) {
-                    html.setExtraInfoValues()
-                    html.insertMapFrame()
-                } else {
-                    html.unSetExtraInfoValues()
-                    html.removeMapFrame()
-                }
-            },
             googleMap : function() {
                 let intervalDetectGoogleMaps
 
                 intervalDetectGoogleMaps = setInterval(function() {
                     if ($('#map-canvas').length) {
+                        setTimeout(function(){
+                            $('.shipping-option-item-name').html('Recojo en tienda')
+                            $('.shipping-option-item-value').html(' - 5 de noviembre')
+                            $('.shipping-option-item-sep').remove()
+                            $('.shipping-option-item-time.delivery-estimate').remove()
+                        }, 500)
                         html.removeButtons()
-                        validation.modalityChosed()
+                        html.setExtraInfoValues()
+                        html.insertMapFrame()                        
                         events.searchOtherAddress()
                         clearInterval(intervalDetectGoogleMaps)
                     }
@@ -130,10 +115,21 @@ $(document).ready(function ($) {
             shippingStep : function() {
                 window.onpopstate = function(event) {
                     if (/shipping/i.test(document.location.href)) {
+                        html.removeSelectElements()
                         html.removeButtons()
                         html.insertButtons()
-                        events.optionButtons()
+                        setTimeout(function() {
+                            html.setSelectStyle()
+                            html.removeSelectElements()
+                            html.insertSelectElements()                            
+                        }, 500)
                         validation.googleMap()
+
+                    } else if (/payment/i.test(document.location.href)) {
+                        setTimeout(function(){
+                            $('.description .shipping-date.pull-left').remove()
+                        }, 2000)
+                        events.editAddress()
                     }
                 }
             }
