@@ -428,6 +428,8 @@ let initialize = function() {
             if (productID && idsBuyBack.includes(parseInt(productID))) {
                 // load 
                 validation.shippingStep()
+            } else {
+                console.log('Invocando a Willy')
             }
         })
     }
