@@ -288,7 +288,7 @@
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    z-index: -1;
     opacity: 0;
     transition: opacity 300ms ease 0s;
     
