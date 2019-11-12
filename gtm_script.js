@@ -316,14 +316,14 @@ let html = {
         $('body').find('.delivery-mode-frame').remove()
     },
     setExtraInfoValues : function() {
-        $('body').find('#shipping-data .ship-more-info').val('recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda recojo en tienda')
-        $('body').find('#shipping-data .ship-reference').val('Recojo en tienda - TP LARCO')
+        $('body').find('#shipping-data #ship-more-info').val('recojo en tienda recojo'.repeat(30))
+        $('body').find('#shipping-data #ship-reference').val('Recojo en tienda - TP LARCO')
         $('body').find('#shipping-data .ship-more-info').css({'opacity':'0','position':'absolute','z-index':'-1'})
         $('body').find('#shipping-data .ship-reference').css({'opacity':'0','position':'absolute','z-index':'-1'})
     },
     unSetExtraInfoValues : function() {
-        $('body').find('#shipping-data .ship-more-info').val('')
-        $('body').find('#shipping-data .ship-reference').val('')
+        $('body').find('#shipping-data #ship-more-info').val('')
+        $('body').find('#shipping-data #ship-reference').val('')
         $('body').find('#shipping-data .ship-more-info').css({'opacity':'','position':'','z-index':''})
         $('body').find('#shipping-data .ship-reference').css({'opacity':'','position':'','z-index':''})
     }
