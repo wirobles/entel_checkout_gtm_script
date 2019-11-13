@@ -1,16 +1,15 @@
 .popup-ampm-info-button {
-    order: 2;
     width: 310px;
     height: 50px;
     text-align: center;
     border: 1px dashed #016FD0;
     border-radius: 32px;
-    display: inline-block;
+    display: block;
     vertical-align: top;
     background-color: #F3F7F9;
-    float: right;
     cursor: pointer;
-    position: relative;
+	position: relative;
+	margin: 0 auto;
     
     & > * {
         display: inline-block;
@@ -18,9 +17,7 @@
     }
 
     @media (min-width: 700px) {
-		float: none;
-        display: block;
-        margin: 0 auto;
+		float: right;
 	}
 
     p {        
@@ -78,7 +75,7 @@
     }    
 }
 
-.popup-overlay {
+.popup-ampm-overlay {
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -95,7 +92,7 @@
     }
 }
 
-.popup-info-delivery {
+.popup-ampm-info-delivery {
 	position: fixed;
 	margin: auto;
 	left: 0;
@@ -190,10 +187,6 @@
 		text-align: center;
 		font-weight: 700;
 		border-radius: 5px;
-
-		@media (min-width: 768px) {
-			width: 463px;
-		}
 
 		span {
 			display: block;
