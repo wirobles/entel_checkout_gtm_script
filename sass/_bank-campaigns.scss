@@ -310,7 +310,7 @@
     margin: auto;
     border-radius: 5px;
     background-color: #fff;
-    z-index: 0;
+    z-index: -1;
     opacity: 0;
     transition: opacity 300ms ease 0s, transform 300ms ease 0s;
     text-align: center;
