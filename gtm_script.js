@@ -269,7 +269,7 @@ var interval_modalerrorpago = setInterval(function() {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-let html = {
+/*let html = {
     insertButtons : function() {
         let stringDeliveryMode = '<div class="delivery-mode-title">Recuerda que la entrega del equipo se realizará el día 15 de noviembre en la tienda Av. Larco 497 - Miraflores, Lima a las 00:00 hrs</div>'                
         + '<div id="delivery-store" class="delivery-button">'
@@ -445,7 +445,7 @@ let initialize = function() {
     }
 }
 
-initialize()
+initialize()*/
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
